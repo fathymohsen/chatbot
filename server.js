@@ -22,9 +22,10 @@ app.post('/api/chat', async (req, res) => {
         });
         
         res.json({ reply: response.text }); 
- } catch (error) {
-        // الخدعة: هنخلي السيرفر يبعت رسالة الخطأ كأنها رد من البوت عشان نقراها بسهولة!
-        res.json({ reply: "سبب المشكلة من جوجل هو: " + error.message });
+} catch (error) {
+        // لو حصل إيرور (زي إن الليميت خلص)، البوت هيعتذر بشياكة
+        console.error("مشكلة في السيرفر:", error.message);
+        res.json({ reply: "عذراً، أواجه ضغطاً كبيراً في الرسائل حالياً. يرجى المحاولة مرة أخرى بعد دقيقة." });
     }
 });
 
