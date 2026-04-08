@@ -1,0 +1,10 @@
+{
+  "name": "gigs2",
+  "version": "1.0.0",
+  "type": "module", 
+  "dependencies": {
+    "@google/genai": "^0.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
