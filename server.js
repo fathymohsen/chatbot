@@ -22,9 +22,9 @@ app.post('/api/chat', async (req, res) => {
         });
         
         res.json({ reply: response.text }); 
-    } catch (error) {
-        console.error("Error details:", error);
-        res.status(500).json({ error: 'حدث خطأ في السيرفر' });
+ } catch (error) {
+        // الخدعة: هنخلي السيرفر يبعت رسالة الخطأ كأنها رد من البوت عشان نقراها بسهولة!
+        res.json({ reply: "سبب المشكلة من جوجل هو: " + error.message });
     }
 });
 
