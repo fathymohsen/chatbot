@@ -10,12 +10,11 @@ app.use(cors()); // عشان نسمح للموقع بتاعك يكلم السي�
 const ai = new GoogleGenAI({ apiKey: 'AIzaSyCuRL2fckWvLbzzUKOCA9HMrC3tqf35YtY' });
 
 // هنا بنعمل الرابط اللي الموقع هيكلمه
+// هنا بنعمل الرابط اللي الموقع هيكلمه
 app.post('/api/chat', async (req, res) => {
-    // 1. بناخد الرسالة اللي اليوزر كتبها في الموقع
     const userMessage = req.body.message; 
 
     try {
-        // 2. بنبعتها لجيميناي
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
             contents: userMessage,
@@ -24,15 +23,9 @@ app.post('/api/chat', async (req, res) => {
             }
         });
         
-        // 3. بنرجع رد جيميناي للموقع بتاعك
         res.json({ reply: response.text }); 
     } catch (error) {
-        console.error(error);
+        console.error("Error details:", error);
         res.status(500).json({ error: 'حدث خطأ في السيرفر' });
     }
-});
-
-// تشغيل السيرفر
-app.listen(3000, () => {
-    console.log('السيرفر شغال على بورت 3000...');
 });
