@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors()); 
 
 // تأكد إنك تحط مفتاح جيميناي بتاعك بين علامتين التنصيص هنا
-const ai = new GoogleGenAI({ apiKey: 'AIzaSyA_YQtvDvKkmf2B-Wt6XDlDEPIc0x4kAds' });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 app.post('/api/chat', async (req, res) => {
     const userMessage = req.body.message; 
